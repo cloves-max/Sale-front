@@ -1,0 +1,70 @@
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}
+
+.shell__sidebar {
+  margin: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: calc(100vh - 2rem);
+  position: sticky;
+  top: 1rem;
+}
+
+.brand__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-bottom: 0.35rem;
+}
+
+.brand h2 {
+  font-size: 1.6rem;
+}
+
+.shell__nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.shell__nav a {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.shell__nav a.is-active,
+.shell__nav a:hover {
+  background: #e8f5ef;
+  color: var(--color-accent-strong);
+}
+
+.shell__user {
+  margin-top: auto;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.shell__content {
+  padding: 1.5rem 1.5rem 2.5rem;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .shell__sidebar {
+    position: static;
+    height: auto;
+  }
+}

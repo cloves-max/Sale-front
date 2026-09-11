@@ -1,0 +1,22 @@
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric {
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.metric strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+@media (max-width: 800px) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,16 @@
+.form-card {
+  padding: 1.5rem;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+@media (max-width: 800px) {
+  .item-row {
+    grid-template-columns: 1fr;
+  }
+}

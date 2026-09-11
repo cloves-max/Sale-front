@@ -1,0 +1,35 @@
+<div class="shell">
+  <aside class="shell__sidebar surface">
+    <div class="brand">
+      <p class="brand__eyebrow">Sales API</p>
+      <h2>Sales Front</h2>
+    </div>
+
+    <nav class="shell__nav">
+      <a routerLink="/dashboard" routerLinkActive="is-active">Dashboard</a>
+      <a routerLink="/products" routerLinkActive="is-active">Products</a>
+      <a routerLink="/sales" routerLinkActive="is-active">Sales</a>
+    </nav>
+
+    @if (currentUser(); as user) {
+      <div class="shell__user">
+        <strong>{{ user.name }}</strong>
+        <span class="muted">{{ user.role }}</span>
+        <button type="button" class="btn btn-secondary" (click)="logout()">Sign out</button>
+      </div>
+    }
+  </aside>
+
+  <main class="shell__content">
+    @if (notification(); as toast) {
+      <div class="alert" [class.alert-error]="toast.tone === 'error'" [class.alert-success]="toast.tone === 'success'">
+        <div class="row" style="justify-content: space-between">
+          <span>{{ toast.message }}</span>
+          <button type="button" class="btn btn-secondary" (click)="dismissNotification()">Dismiss</button>
+        </div>
+      </div>
+    }
+
+    <router-outlet />
+  </main>
+</div>

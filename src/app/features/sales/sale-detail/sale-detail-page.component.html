@@ -1,0 +1,51 @@
+<app-page-header title="Sale details" subtitle="Read-only view of a sale snapshot.">
+  <a class="btn btn-secondary" routerLink="/sales">Back to sales</a>
+</app-page-header>
+
+@if (isLoading()) {
+  <app-loading-state message="Loading sale..." />
+} @else if (errorMessage()) {
+  <div class="alert alert-error">{{ errorMessage() }}</div>
+} @else {
+  @if (sale(); as currentSale) {
+    <section class="surface detail-card stack">
+      <div class="row" style="justify-content: space-between">
+        <div>
+          <h2>Sale #{{ currentSale.id }}</h2>
+          <p class="muted">
+            Seller {{ currentSale.sellerName }} · {{ currentSale.createdAt | date: 'medium' }}
+          </p>
+        </div>
+        <span class="badge">{{ currentSale.status }}</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Qty</th>
+              <th>Unit price</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of currentSale.items; track item.productId) {
+              <tr>
+                <td>{{ item.productName }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.unitPrice | currency: 'BRL' }}</td>
+                <td>{{ item.subtotal | currency: 'BRL' }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="total">
+        Total:
+        <strong>{{ currentSale.totalAmount | currency: 'BRL' }}</strong>
+      </p>
+    </section>
+  }
+}

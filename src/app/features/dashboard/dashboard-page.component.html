@@ -1,0 +1,30 @@
+<app-page-header
+  title="Dashboard"
+  [subtitle]="'Welcome back, ' + (currentUser()?.name ?? 'seller')"
+>
+  <a class="btn btn-secondary" routerLink="/products/new">New product</a>
+  <a class="btn btn-primary" routerLink="/sales/new">New sale</a>
+</app-page-header>
+
+@if (isLoading()) {
+  <app-loading-state message="Loading dashboard..." />
+} @else {
+  @if (errorMessage()) {
+    <div class="alert alert-error">{{ errorMessage() }}</div>
+  }
+
+  <section class="metrics">
+    <article class="metric surface">
+      <p class="muted">Active products</p>
+      <strong>{{ products().length }}</strong>
+    </article>
+    <article class="metric surface">
+      <p class="muted">My sales</p>
+      <strong>{{ sales().length }}</strong>
+    </article>
+    <article class="metric surface">
+      <p class="muted">Latest sale total</p>
+      <strong>{{ (sales().length ? sales()[0].totalAmount : 0) | currency: 'BRL' }}</strong>
+    </article>
+  </section>
+}

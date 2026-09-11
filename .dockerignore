@@ -1,0 +1,10 @@
+node_modules
+dist
+.angular
+.git
+.vscode
+.cursor
+.gitignore
+README.md
+proxy.conf.json
+**/*.md
