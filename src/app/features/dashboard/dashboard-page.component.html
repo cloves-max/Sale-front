@@ -1,13 +1,13 @@
 <app-page-header
-  title="Dashboard"
-  [subtitle]="'Welcome back, ' + (currentUser()?.name ?? 'seller')"
+  title="Painel"
+  [subtitle]="'Bem-vindo de volta, ' + (currentUser()?.name ?? 'vendedor')"
 >
-  <a class="btn btn-secondary" routerLink="/products/new">New product</a>
-  <a class="btn btn-primary" routerLink="/sales/new">New sale</a>
+  <a class="btn btn-secondary" routerLink="/products/new">Novo produto</a>
+  <a class="btn btn-primary" routerLink="/sales/new">Nova venda</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading dashboard..." />
+  <app-loading-state message="Carregando painel..." />
 } @else {
   @if (errorMessage()) {
     <div class="alert alert-error">{{ errorMessage() }}</div>
@@ -15,15 +15,15 @@
 
   <section class="metrics">
     <article class="metric surface">
-      <p class="muted">Active products</p>
+      <p class="muted">Produtos ativos</p>
       <strong>{{ products().length }}</strong>
     </article>
     <article class="metric surface">
-      <p class="muted">My sales</p>
+      <p class="muted">Minhas vendas</p>
       <strong>{{ sales().length }}</strong>
     </article>
     <article class="metric surface">
-      <p class="muted">Latest sale total</p>
+      <p class="muted">Valor da última venda</p>
       <strong>{{ (sales().length ? sales()[0].totalAmount : 0) | currency: 'BRL' }}</strong>
     </article>
   </section>

@@ -1,9 +1,9 @@
-<app-page-header title="Sale details" subtitle="Read-only view of a sale snapshot.">
-  <a class="btn btn-secondary" routerLink="/sales">Back to sales</a>
+<app-page-header title="Detalhes da venda" subtitle="Visualização somente leitura da venda.">
+  <a class="btn btn-secondary" routerLink="/sales">Voltar às vendas</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading sale..." />
+  <app-loading-state message="Carregando venda..." />
 } @else if (errorMessage()) {
   <div class="alert alert-error">{{ errorMessage() }}</div>
 } @else {
@@ -11,9 +11,9 @@
     <section class="surface detail-card stack">
       <div class="row" style="justify-content: space-between">
         <div>
-          <h2>Sale #{{ currentSale.id }}</h2>
+          <h2>Venda #{{ currentSale.id }}</h2>
           <p class="muted">
-            Seller {{ currentSale.sellerName }} · {{ currentSale.createdAt | date: 'medium' }}
+            Vendedor {{ currentSale.sellerName }} · {{ currentSale.createdAt | date: 'medium' }}
           </p>
         </div>
         <span class="badge">{{ currentSale.status }}</span>
@@ -23,9 +23,9 @@
         <table class="data-table">
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Qty</th>
-              <th>Unit price</th>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Preço unitário</th>
               <th>Subtotal</th>
             </tr>
           </thead>

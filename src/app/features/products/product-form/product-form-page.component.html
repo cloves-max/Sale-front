@@ -1,12 +1,12 @@
 <app-page-header
-  [title]="isEditMode ? 'Edit product' : 'New product'"
-  subtitle="Fields mirror ProductRequest validation from the backend."
+  [title]="isEditMode ? 'Editar produto' : 'Novo produto'"
+  subtitle="Campos alinhados à validação do ProductRequest no backend."
 >
-  <a class="btn btn-secondary" routerLink="/products">Back to list</a>
+  <a class="btn btn-secondary" routerLink="/products">Voltar à lista</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading product..." />
+  <app-loading-state message="Carregando produto..." />
 } @else {
   <section class="surface form-card">
     <form class="stack" [formGroup]="productForm" (ngSubmit)="submit()">
@@ -15,29 +15,29 @@
       }
 
       <div class="field">
-        <label for="name">Name</label>
+        <label for="name">Nome</label>
         <input id="name" type="text" formControlName="name" />
       </div>
 
       <div class="field">
-        <label for="description">Description</label>
+        <label for="description">Descrição</label>
         <textarea id="description" rows="4" formControlName="description" maxlength="500"></textarea>
       </div>
 
       <div class="grid-two">
         <div class="field">
-          <label for="price">Price</label>
+          <label for="price">Preço</label>
           <input id="price" type="number" step="0.01" min="0.01" formControlName="price" />
         </div>
 
         <div class="field">
-          <label for="stockQuantity">Stock quantity</label>
+          <label for="stockQuantity">Quantidade em estoque</label>
           <input id="stockQuantity" type="number" min="0" formControlName="stockQuantity" />
         </div>
       </div>
 
       <button class="btn btn-primary" type="submit" [disabled]="isSubmitting()">
-        {{ isSubmitting() ? 'Saving...' : 'Save product' }}
+        {{ isSubmitting() ? 'Salvando...' : 'Salvar produto' }}
       </button>
     </form>
   </section>

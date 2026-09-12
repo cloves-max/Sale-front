@@ -1,9 +1,9 @@
-<app-page-header title="My sales" subtitle="Sales created by the authenticated seller.">
-  <a class="btn btn-primary" routerLink="/sales/new">New sale</a>
+<app-page-header title="Minhas vendas" subtitle="Vendas criadas pelo vendedor autenticado.">
+  <a class="btn btn-primary" routerLink="/sales/new">Nova venda</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading sales..." />
+  <app-loading-state message="Carregando vendas..." />
 } @else if (errorMessage()) {
   <div class="alert alert-error">{{ errorMessage() }}</div>
 } @else {
@@ -14,8 +14,8 @@
           <th>ID</th>
           <th>Status</th>
           <th>Total</th>
-          <th>Created at</th>
-          <th>Items</th>
+          <th>Criada em</th>
+          <th>Itens</th>
           <th></th>
         </tr>
       </thead>
@@ -28,12 +28,12 @@
             <td>{{ sale.createdAt | date: 'short' }}</td>
             <td>{{ sale.items.length }}</td>
             <td>
-              <a class="btn btn-secondary" [routerLink]="['/sales', sale.id]">Details</a>
+              <a class="btn btn-secondary" [routerLink]="['/sales', sale.id]">Detalhes</a>
             </td>
           </tr>
         } @empty {
           <tr>
-            <td colspan="6" class="muted">No sales yet.</td>
+            <td colspan="6" class="muted">Nenhuma venda ainda.</td>
           </tr>
         }
       </tbody>

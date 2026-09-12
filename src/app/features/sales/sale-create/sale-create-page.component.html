@@ -1,9 +1,9 @@
-<app-page-header title="New sale" subtitle="Seller is resolved from the JWT on the backend.">
-  <a class="btn btn-secondary" routerLink="/sales">Back to sales</a>
+<app-page-header title="Nova venda" subtitle="O vendedor é identificado pelo JWT no backend.">
+  <a class="btn btn-secondary" routerLink="/sales">Voltar às vendas</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading products..." />
+  <app-loading-state message="Carregando produtos..." />
 } @else {
   <section class="surface form-card">
     <form class="stack" [formGroup]="saleForm" (ngSubmit)="submit()">
@@ -15,12 +15,12 @@
         @for (itemControl of itemsFormArray.controls; track $index; let itemIndex = $index) {
           <div class="item-row" [formGroupName]="itemIndex">
             <div class="field">
-              <label [attr.for]="'productId-' + itemIndex">Product</label>
+              <label [attr.for]="'productId-' + itemIndex">Produto</label>
               <select [id]="'productId-' + itemIndex" formControlName="productId">
-                <option [value]="0" disabled>Select a product</option>
+                <option [value]="0" disabled>Selecione um produto</option>
                 @for (product of products(); track product.id) {
                   <option [value]="product.id">
-                    {{ product.name }} — {{ product.price | currency: 'BRL' }} (stock
+                    {{ product.name }} — {{ product.price | currency: 'BRL' }} (estoque
                     {{ product.stockQuantity }})
                   </option>
                 }
@@ -28,7 +28,7 @@
             </div>
 
             <div class="field">
-              <label [attr.for]="'quantity-' + itemIndex">Quantity</label>
+              <label [attr.for]="'quantity-' + itemIndex">Quantidade</label>
               <input
                 [id]="'quantity-' + itemIndex"
                 type="number"
@@ -38,16 +38,16 @@
             </div>
 
             <button type="button" class="btn btn-secondary" (click)="removeItem(itemIndex)">
-              Remove
+              Remover
             </button>
           </div>
         }
       </div>
 
       <div class="row">
-        <button type="button" class="btn btn-secondary" (click)="addItem()">Add item</button>
+        <button type="button" class="btn btn-secondary" (click)="addItem()">Adicionar item</button>
         <button class="btn btn-primary" type="submit" [disabled]="isSubmitting()">
-          {{ isSubmitting() ? 'Creating...' : 'Create sale' }}
+          {{ isSubmitting() ? 'Criando...' : 'Criar venda' }}
         </button>
       </div>
     </form>

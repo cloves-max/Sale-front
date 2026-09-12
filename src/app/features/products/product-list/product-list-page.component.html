@@ -1,9 +1,9 @@
-<app-page-header title="Products" subtitle="Manage catalog items exposed by the Sales API.">
-  <a class="btn btn-primary" routerLink="/products/new">New product</a>
+<app-page-header title="Produtos" subtitle="Gerencie o catálogo disponível na API de vendas.">
+  <a class="btn btn-primary" routerLink="/products/new">Novo produto</a>
 </app-page-header>
 
 @if (isLoading()) {
-  <app-loading-state message="Loading products..." />
+  <app-loading-state message="Carregando produtos..." />
 } @else if (errorMessage()) {
   <div class="alert alert-error">{{ errorMessage() }}</div>
 } @else {
@@ -11,11 +11,11 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Stock</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Estoque</th>
           <th>Status</th>
-          <th>Actions</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -29,15 +29,15 @@
             </td>
             <td>{{ product.price | currency: 'BRL' }}</td>
             <td>{{ product.stockQuantity }}</td>
-            <td><span class="badge">{{ product.active ? 'Active' : 'Inactive' }}</span></td>
+            <td><span class="badge">{{ product.active ? 'Ativo' : 'Inativo' }}</span></td>
             <td class="row">
-              <a class="btn btn-secondary" [routerLink]="['/products', product.id, 'edit']">Edit</a>
-              <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+              <a class="btn btn-secondary" [routerLink]="['/products', product.id, 'edit']">Editar</a>
+              <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">Excluir</button>
             </td>
           </tr>
         } @empty {
           <tr>
-            <td colspan="5" class="muted">No products found. Create the first one.</td>
+            <td colspan="5" class="muted">Nenhum produto encontrado. Crie o primeiro.</td>
           </tr>
         }
       </tbody>
