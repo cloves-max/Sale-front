@@ -42,11 +42,11 @@ export class RegisterPageComponent {
 
     this.authService.register(this.registerForm.getRawValue()).subscribe({
       next: () => {
-        this.notificationService.success('Account created successfully');
+        this.notificationService.success('Conta criada com sucesso');
         void this.router.navigate(['/dashboard']);
       },
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Unable to register'));
+        this.formError.set(resolveErrorMessage(error, 'Não foi possível registrar'));
         this.isSubmitting.set(false);
       },
       complete: () => this.isSubmitting.set(false),

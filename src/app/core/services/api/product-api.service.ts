@@ -44,7 +44,7 @@ export class ProductApiService {
 
   private unwrap<T>(response: ApiResponse<T>): T {
     if (!response.success || response.data === null) {
-      throw new Error(response.message || 'Product request failed');
+      throw new Error(response.message || 'Falha na requisição de produto');
     }
     return response.data;
   }

@@ -27,7 +27,7 @@ export class SaleDetailPageComponent implements OnInit {
     const saleId = Number(saleIdParam);
 
     if (!saleIdParam || Number.isNaN(saleId)) {
-      this.errorMessage.set('Invalid sale identifier');
+      this.errorMessage.set('Identificador de venda inválido');
       this.isLoading.set(false);
       return;
     }
@@ -35,7 +35,7 @@ export class SaleDetailPageComponent implements OnInit {
     this.saleApiService.findById(saleId).subscribe({
       next: (sale) => this.sale.set(sale),
       error: (error: unknown) => {
-        this.errorMessage.set(resolveErrorMessage(error, 'Failed to load sale'));
+        this.errorMessage.set(resolveErrorMessage(error, 'Falha ao carregar venda'));
         this.isLoading.set(false);
       },
       complete: () => this.isLoading.set(false),

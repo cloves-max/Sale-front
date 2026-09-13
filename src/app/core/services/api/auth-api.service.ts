@@ -25,7 +25,7 @@ export class AuthApiService {
 
   private unwrap(response: ApiResponse<AuthResponse>): AuthResponse {
     if (!response.success || !response.data) {
-      throw new Error(response.message || 'Authentication request failed');
+      throw new Error(response.message || 'Falha na requisição de autenticação');
     }
     return response.data;
   }

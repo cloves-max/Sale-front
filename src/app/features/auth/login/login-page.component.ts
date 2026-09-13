@@ -38,11 +38,11 @@ export class LoginPageComponent {
 
     this.authService.login(this.loginForm.getRawValue()).subscribe({
       next: () => {
-        this.notificationService.success('Login successful');
+        this.notificationService.success('Login realizado com sucesso');
         void this.router.navigate(['/dashboard']);
       },
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Unable to sign in'));
+        this.formError.set(resolveErrorMessage(error, 'Não foi possível entrar'));
         this.isSubmitting.set(false);
       },
       complete: () => this.isSubmitting.set(false),
