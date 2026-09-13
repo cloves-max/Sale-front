@@ -19,11 +19,11 @@ export const errorInterceptor: HttpInterceptorFn = (request, next) => {
 
       if (error.status === 401 && !isAuthEndpoint) {
         authService.logout();
-        notificationService.error(apiMessage || 'Session expired. Please sign in again.');
+        notificationService.error(apiMessage || 'Sessão expirada. Faça login novamente.');
       } else if (error.status === 403) {
-        notificationService.error(apiMessage || 'You do not have permission to perform this action.');
+        notificationService.error(apiMessage || 'Você não tem permissão para realizar esta ação.');
       } else if (!isAuthEndpoint) {
-        notificationService.error(apiMessage || 'Unexpected server error. Please try again.');
+        notificationService.error(apiMessage || 'Erro inesperado no servidor. Tente novamente.');
       }
 
       return throwError(() => error);

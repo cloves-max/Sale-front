@@ -34,7 +34,7 @@ export class ProductListPageComponent implements OnInit {
     this.productApiService.findAll().subscribe({
       next: (products) => this.products.set(products),
       error: (error: unknown) => {
-        this.errorMessage.set(resolveErrorMessage(error, 'Failed to load products'));
+        this.errorMessage.set(resolveErrorMessage(error, 'Falha ao carregar produtos'));
         this.isLoading.set(false);
       },
       complete: () => this.isLoading.set(false),
@@ -42,18 +42,18 @@ export class ProductListPageComponent implements OnInit {
   }
 
   deleteProduct(product: ProductResponse): void {
-    const confirmed = window.confirm(`Soft-delete product "${product.name}"?`);
+    const confirmed = window.confirm(`Excluir o produto "${product.name}"?`);
     if (!confirmed) {
       return;
     }
 
     this.productApiService.delete(product.id).subscribe({
       next: () => {
-        this.notificationService.success('Product deleted successfully');
+        this.notificationService.success('Produto excluído com sucesso');
         this.loadProducts();
       },
       error: (error: unknown) => {
-        this.notificationService.error(resolveErrorMessage(error, 'Failed to delete product'));
+        this.notificationService.error(resolveErrorMessage(error, 'Falha ao excluir produto'));
       },
     });
   }

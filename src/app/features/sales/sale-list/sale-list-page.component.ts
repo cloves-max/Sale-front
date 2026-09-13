@@ -25,7 +25,7 @@ export class SaleListPageComponent implements OnInit {
     this.saleApiService.findMine().subscribe({
       next: (sales) => this.sales.set(sales),
       error: (error: unknown) => {
-        this.errorMessage.set(resolveErrorMessage(error, 'Failed to load sales'));
+        this.errorMessage.set(resolveErrorMessage(error, 'Falha ao carregar vendas'));
         this.isLoading.set(false);
       },
       complete: () => this.isLoading.set(false),

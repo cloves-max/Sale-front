@@ -31,7 +31,7 @@ export class SaleApiService {
 
   private unwrap<T>(response: ApiResponse<T>): T {
     if (!response.success || response.data === null) {
-      throw new Error(response.message || 'Sale request failed');
+      throw new Error(response.message || 'Falha na requisição de venda');
     }
     return response.data;
   }

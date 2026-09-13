@@ -47,14 +47,14 @@ export class DashboardPageComponent implements OnInit {
     this.productApiService.findAll().subscribe({
       next: (products) => this.products.set(products),
       error: (error: unknown) =>
-        this.errorMessage.set(resolveErrorMessage(error, 'Failed to load products')),
+        this.errorMessage.set(resolveErrorMessage(error, 'Falha ao carregar produtos')),
       complete: finalize,
     });
 
     this.saleApiService.findMine().subscribe({
       next: (sales) => this.sales.set(sales),
       error: (error: unknown) =>
-        this.errorMessage.set(resolveErrorMessage(error, 'Failed to load sales')),
+        this.errorMessage.set(resolveErrorMessage(error, 'Falha ao carregar vendas')),
       complete: finalize,
     });
   }

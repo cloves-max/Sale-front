@@ -47,7 +47,7 @@ export class SaleCreatePageComponent implements OnInit {
     this.productApiService.findAll().subscribe({
       next: (products) => this.products.set(products),
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Failed to load products'));
+        this.formError.set(resolveErrorMessage(error, 'Falha ao carregar produtos'));
         this.isLoading.set(false);
       },
       complete: () => this.isLoading.set(false),
@@ -84,11 +84,11 @@ export class SaleCreatePageComponent implements OnInit {
 
     this.saleApiService.create(payload).subscribe({
       next: (sale) => {
-        this.notificationService.success('Sale created successfully');
+        this.notificationService.success('Venda criada com sucesso');
         void this.router.navigate(['/sales', sale.id]);
       },
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Failed to create sale'));
+        this.formError.set(resolveErrorMessage(error, 'Falha ao criar venda'));
         this.isSubmitting.set(false);
       },
       complete: () => this.isSubmitting.set(false),

@@ -45,7 +45,7 @@ export class ProductFormPageComponent implements OnInit {
 
     const parsedProductId = Number(routeProductId);
     if (Number.isNaN(parsedProductId)) {
-      this.formError.set('Invalid product identifier');
+      this.formError.set('Identificador de produto inválido');
       return;
     }
 
@@ -75,12 +75,12 @@ export class ProductFormPageComponent implements OnInit {
     request$.subscribe({
       next: () => {
         this.notificationService.success(
-          this.isEditMode ? 'Product updated successfully' : 'Product created successfully',
+          this.isEditMode ? 'Produto atualizado com sucesso' : 'Produto criado com sucesso',
         );
         void this.router.navigate(['/products']);
       },
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Failed to save product'));
+        this.formError.set(resolveErrorMessage(error, 'Falha ao salvar produto'));
         this.isSubmitting.set(false);
       },
       complete: () => this.isSubmitting.set(false),
@@ -100,7 +100,7 @@ export class ProductFormPageComponent implements OnInit {
         });
       },
       error: (error: unknown) => {
-        this.formError.set(resolveErrorMessage(error, 'Failed to load product'));
+        this.formError.set(resolveErrorMessage(error, 'Falha ao carregar produto'));
         this.isLoading.set(false);
       },
       complete: () => this.isLoading.set(false),
