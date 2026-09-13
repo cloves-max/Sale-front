@@ -50,16 +50,17 @@ docker compose up --build
 | Front | http://localhost:4200 |
 | API | http://localhost:8080 |
 
-In Docker, Nginx proxies `/api/*` to `app:8080`. The app uses `apiBaseUrl: '/api/v1'`.
+In Docker, Nginx proxies `/api/*` to `API_UPSTREAM` (default `app:8080`). The app uses `apiBaseUrl: '/api/v1'`.
 
 ### Build this image only
 
 ```bash
+cp .env.example .env   # set API_UPSTREAM=host:port of the API
 docker build -t sales-front .
-docker run --rm -p 4200:80 sales-front
+docker run --rm -p 4200:80 --env-file .env sales-front
 ```
 
-(Without the API on the same network, `/api` calls will fail.)
+`API_UPSTREAM` is injected at container start into the Nginx config (not baked into the image).
 
 ## Local development
 
