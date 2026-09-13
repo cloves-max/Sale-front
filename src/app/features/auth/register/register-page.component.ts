@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UserRole, USER_ROLES } from '@core/models/role.model';
+import { UserRole } from '@core/models/role.model';
 import { AuthService } from '@core/services/auth/auth.service';
 import { NotificationService } from '@core/services/notification/notification.service';
 import { resolveErrorMessage } from '@core/utils/error-message.util';
@@ -19,7 +19,18 @@ export class RegisterPageComponent {
   private readonly notificationService = inject(NotificationService);
   private readonly router = inject(Router);
 
-  readonly availableRoles = USER_ROLES;
+  readonly roleOptions = [
+    {
+      value: 'SELLER' as UserRole,
+      label: 'Vendedor',
+      hint: 'Cria e acompanha vendas',
+    },
+    {
+      value: 'ADMIN' as UserRole,
+      label: 'Administrador',
+      hint: 'Gerencia produtos e usuários',
+    },
+  ];
   readonly isSubmitting = signal(false);
   readonly formError = signal<string | null>(null);
 
