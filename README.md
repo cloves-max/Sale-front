@@ -77,12 +77,20 @@ Opens http://localhost:4200 and proxies `/api` via `proxy.conf.json`.
 npm run build          # production build → dist/sales-front
 ```
 
+## Deploy on Vercel
+
+`vercel.json` proxies `/api/*` to the VPS and falls back to `index.html` for Angular routes.
+
+In the Vercel project, set **Root Directory** to `front` (or deploy from this repo). Build/output are already in `vercel.json`.
+
+Ensure the VPS firewall allows inbound traffic on port `8080` from the internet (Vercel edge), or put a reverse proxy with HTTPS in front of the API.
+
 ## Environment
 
 | File | `apiBaseUrl` |
 |------|----------------|
 | `environment.development.ts` | `/api/v1` (dev server proxy) |
-| `environment.ts` (production) | `/api/v1` (Nginx proxy in Docker) |
+| `environment.ts` (production) | `/api/v1` (Nginx / Vercel rewrite) |
 
 ## Main routes
 
